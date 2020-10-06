@@ -37,9 +37,8 @@ module "nomad" {
 }
 
 resource "aws_eip" "nomad_server_ip" {
-	tags = {
-		Name = "Nomad server IP"
-	}
+	instance = data.aws_instances.nomad_server_instances.ids[0]
+	vpc = true
 }
 
 data "aws_instances" "nomad_server_instances" {
@@ -48,7 +47,9 @@ data "aws_instances" "nomad_server_instances" {
 	}
 }
 
+/*
 resource "aws_eip_association" "static_ip" {
 	instance_id  = data.aws_instances.nomad_server_instances.ids[0]
-	allocation_id = data.aws_eip.nomad_server_ip.id
+	allocation_id = aws_eip.nomad_server_ip.id
 }
+*/
