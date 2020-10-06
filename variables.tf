@@ -2,18 +2,22 @@
 
 variable ami {
 	default = "ami-xxxxxxxxxxxxxx"
+	description = "作成されたAMIのID"
 }
 
 variable tfc_org {
 	default = "xxxxxx"
+	description = "VPCなどの情報があるOrg名"
 }
 
 variable tfc_ws {
 	default = "xxxxxxxxx"
+	description = "VPCなどの情報を含んだStateのWorkspace"
 }
 
 variable ssh_key_name {
 	default = "xxxxx"
+	description "インスタンスにSSHするためのKey pair"
 }
 
 # Optional 
