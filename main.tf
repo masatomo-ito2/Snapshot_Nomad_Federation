@@ -1,6 +1,6 @@
 provider "aws" {
-	region = "ap-northeast-1"
-	alias = "japan"
+  region = "ap-northeast-1"
+  alias  = "japan"
 }
 
 data terraform_remote_state "this" {
@@ -15,24 +15,23 @@ data terraform_remote_state "this" {
 }
 
 locals {
-  public_subnets          = data.terraform_remote_state.this.outputs.public_subnets
-  security_group_ssh      = data.terraform_remote_state.this.outputs.security_group_ssh
-  vpc_id                  = data.terraform_remote_state.this.outputs.vpc_id
+  public_subnets = data.terraform_remote_state.this.outputs.public_subnets
+  vpc_id         = data.terraform_remote_state.this.outputs.vpc_id
 }
 
 module "nomad" {
-	providers = {
-		aws = aws.japan
-	}
+  providers = {
+    aws = aws.japan
+  }
 
   source  = "hashicorp/nomad/aws"
   version = "0.6.7"
 
-	vpc_id = local.vpc_id
+  vpc_id = local.vpc_id
 
-	ami_id = var.ami
-	num_clients = var.num_clients
-	num_servers = var.num_servers
-	ssh_key_name = var.ssh_key_name
-	instance_type = var.instance_type
+  ami_id        = var.ami
+  num_clients   = var.num_clients
+  num_servers   = var.num_servers
+  ssh_key_name  = var.ssh_key_name
+  instance_type = var.instance_type
 }
