@@ -36,6 +36,7 @@ module "nomad" {
   instance_type = var.instance_type
 }
 
+/*
 resource "aws_eip" "nomad_server_ip" {
 	instance = data.aws_instances.nomad_server_instances.ids[0]
 	vpc = true
@@ -47,6 +48,7 @@ data "aws_instances" "nomad_server_instances" {
 	}
 }
 
+*/
 /*
 resource "aws_eip_association" "static_ip" {
 	instance_id  = data.aws_instances.nomad_server_instances.ids[0]

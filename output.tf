@@ -24,3 +24,7 @@ output "asg_name_servers" {
 output "aws_region" {
   value = module.nomad.aws_region
 }
+
+output "nomad_server_ip"  {
+	value = aws_eip.nomad_server_ip.public_ip
+}
