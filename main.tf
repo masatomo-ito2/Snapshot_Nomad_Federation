@@ -35,3 +35,20 @@ module "nomad" {
   ssh_key_name  = var.ssh_key_name
   instance_type = var.instance_type
 }
+
+resource "aws_eip" "nomad_server_ip" {
+	tags = {
+		Name = "Nomad server IP"
+	}
+}
+
+data "aws_instances" "nomad_server_instances" {
+	instance_tags = {
+		Name = "nomad-example-server"
+	}
+}
+
+resource "aws_eip_association" "static_ip" {
+	instance_id  = data.aws_instances.nomad_server_instances.ids[0]
+	allocation_id = data.aws_eip.nomad_server_ip.id
+}
