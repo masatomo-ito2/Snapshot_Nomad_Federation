@@ -15,8 +15,8 @@ data terraform_remote_state "this" {
 }
 
 locals {
-  public_subnets = data.terraform_remote_state.this.outputs.public_subnets
-  vpc_id         = data.terraform_remote_state.this.outputs.vpc_id
+  public_subnets = data.terraform_remote_state.this.outputs.public_subnets_japan
+  vpc_id         = data.terraform_remote_state.this.outputs.vpc_id_japan
 }
 
 module "nomad" {
