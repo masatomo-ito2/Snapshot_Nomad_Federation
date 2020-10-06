@@ -17,7 +17,7 @@ variable tfc_ws {
 
 variable ssh_key_name {
 	default = "xxxxx"
-	description "インスタンスにSSHするためのKey pair"
+	description = "インスタンスにSSHするためのKey pair"
 }
 
 # Optional 
