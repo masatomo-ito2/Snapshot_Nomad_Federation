@@ -15,8 +15,8 @@ data terraform_remote_state "this" {
 }
 
 locals {
-  public_subnets = data.terraform_remote_state.this.outputs.public_subnets_japan
-  vpc_id         = data.terraform_remote_state.this.outputs.vpc_id_japan
+  public_subnets_japan = data.terraform_remote_state.this.outputs.public_subnets_japan
+  vpc_id_japan         = data.terraform_remote_state.this.outputs.vpc_id_japan
 }
 
 module "nomad" {
@@ -24,10 +24,10 @@ module "nomad" {
     aws = aws.japan
   }
 
-  source  = "hashicorp/nomad/aws"
-  version = "0.6.7"
+  source = "./terraform-aws-nomad"
 
-  vpc_id = local.vpc_id
+  vpc_id        = local.vpc_id_japan
+  public_subnet = local.public_subnets_japan
 
   ami_id        = var.ami
   num_clients   = var.num_clients
