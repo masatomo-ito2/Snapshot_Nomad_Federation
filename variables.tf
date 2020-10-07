@@ -1,8 +1,13 @@
 # Required
 
-variable ami {
+variable ami_japan {
   default     = "ami-xxxxxxxxxxxxxx"
-  description = "AMI ID to use"
+  description = "AMI ID to use, must be existed in Japan region"
+}
+
+variable ami_sydney {
+  default     = "ami-xxxxxxxxxxxxxx"
+  description = "AMI ID to use, must be existed in Sydney region"
 }
 
 variable tfc_org {
