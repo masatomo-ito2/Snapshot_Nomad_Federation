@@ -15,9 +15,14 @@ variable tfc_ws {
   description = "Workspace name that contains vpc state"
 }
 
-variable ssh_key_name {
+variable ssh_key_name_japan {
   default     = "xxxxx"
-  description = "Keypair name to ssh"
+  description = "Keypair name to ssh in Japan"
+}
+
+variable ssh_key_name_sydney {
+  default     = "xxxxx"
+  description = "Keypair name to ssh in Sydney"
 }
 
 # Optional 

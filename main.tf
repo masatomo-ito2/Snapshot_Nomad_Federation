@@ -3,6 +3,11 @@ provider "aws" {
   alias  = "japan"
 }
 
+provider "aws" {
+  region = "ap-southeast-2"
+  alias  = "sydney"
+}
+
 data terraform_remote_state "this" {
   backend = "remote"
 
@@ -15,11 +20,14 @@ data terraform_remote_state "this" {
 }
 
 locals {
-  public_subnets_japan = data.terraform_remote_state.this.outputs.public_subnets_japan
-  vpc_id_japan         = data.terraform_remote_state.this.outputs.vpc_id_japan
+  public_subnets_japan  = data.terraform_remote_state.this.outputs.public_subnets_japan
+  vpc_id_japan          = data.terraform_remote_state.this.outputs.vpc_id_japan
+  public_subnets_sydney = data.terraform_remote_state.this.outputs.public_subnets_sydney
+  vpc_id_sydney         = data.terraform_remote_state.this.outputs.vpc_id_sydney
 }
 
-module "nomad" {
+# Nomad cluster in Japan
+module "nomad_japan" {
   providers = {
     aws = aws.japan
   }
@@ -32,26 +40,24 @@ module "nomad" {
   ami_id        = var.ami
   num_clients   = var.num_clients
   num_servers   = var.num_servers
-  ssh_key_name  = var.ssh_key_name
+  ssh_key_name  = var.ssh_key_name_japan
   instance_type = var.instance_type
 }
 
-/*
-resource "aws_eip" "nomad_server_ip" {
-	instance = data.aws_instances.nomad_server_instances.ids[0]
-	vpc = true
-}
+# Nomad cluster in Sydney
+module "nomad_sydney" {
+  providers = {
+    aws = aws.sydney
+  }
 
-data "aws_instances" "nomad_server_instances" {
-	instance_tags = {
-		Name = "nomad-example-server"
-	}
-}
+  source = "./terraform-aws-nomad"
 
-*/
-/*
-resource "aws_eip_association" "static_ip" {
-	instance_id  = data.aws_instances.nomad_server_instances.ids[0]
-	allocation_id = aws_eip.nomad_server_ip.id
+  vpc_id        = local.vpc_id_sydney
+  public_subnet = local.public_subnets_sydney
+
+  ami_id        = var.ami
+  num_clients   = var.num_clients
+  num_servers   = var.num_servers
+  ssh_key_name  = var.ssh_key_name_sydney
+  instance_type = var.instance_type
 }
-*/

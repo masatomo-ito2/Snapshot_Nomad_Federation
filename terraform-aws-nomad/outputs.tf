@@ -58,3 +58,8 @@ output "nomad_servers_cluster_tag_value" {
   value = module.servers.cluster_tag_value
 }
 
+# XXX Masa added
+
+output "public_ip_client" {
+  value = module.clients.public_ips_clients
+}

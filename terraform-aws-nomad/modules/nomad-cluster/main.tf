@@ -33,7 +33,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
     value               = var.cluster_name
     propagate_at_launch = true
   }
-  
+
   tag {
     key                 = var.cluster_tag_key
     value               = var.cluster_tag_value
@@ -49,7 +49,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
       propagate_at_launch = tag.value["propagate_at_launch"]
     }
   }
-  
+
   lifecycle {
     # As of AWS Provider 3.x, inline load_balancers and target_group_arns
     # in an aws_autoscaling_group take precedence over attachment resources.
@@ -209,5 +209,22 @@ data "aws_iam_policy_document" "instance_role" {
       identifiers = ["ec2.amazonaws.com"]
     }
   }
+}
+
+# XXX Added by Masa
+# Get public IP for each servers in Japan
+
+data "aws_instances" "nodes" {
+  depends_on = [aws_autoscaling_group.autoscaling_group]
+
+  instance_tags = {
+    Name = var.cluster_name
+  }
+}
+
+data "aws_instance" "asg-one-instances" {
+  count       = aws_autoscaling_group.autoscaling_group.desired_capacity
+  depends_on  = [data.aws_instances.nodes]
+  instance_id = data.aws_instances.nodes.ids[count.index]
 }
 

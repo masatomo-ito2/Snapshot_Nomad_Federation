@@ -73,6 +73,7 @@ variable "vpc_id" {
   default     = ""
 }
 
+# XXX Masa added
 variable public_subnet {
   description = "Public subnet id"
   type        = list(string)

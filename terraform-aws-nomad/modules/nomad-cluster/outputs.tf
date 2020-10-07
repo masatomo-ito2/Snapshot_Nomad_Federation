@@ -42,3 +42,7 @@ output "security_group_id" {
   value = aws_security_group.lc_security_group.id
 }
 
+# XXX Masa Added
+output public_ips_clients {
+  value = data.aws_instance.asg-one-instances.*.public_ip
+}

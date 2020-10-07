@@ -1,32 +1,25 @@
-output "launch_config_name_clients" {
-  value = module.nomad.launch_config_name_clients
+# Tokyo
+output "security_group_id_servers_japan" {
+  value = module.nomad_japan.security_group_id_servers
 }
 
-output "launch_config_name_servers" {
-  value = module.nomad.launch_config_name_servers
+output "aws_region_japan" {
+  value = module.nomad_japan.aws_region
 }
 
-output "security_group_id_clients" {
-  value = module.nomad.security_group_id_clients
+output "nomad_client_ips_japan" {
+  value = module.nomad_japan.public_ip_client
 }
 
-output "security_group_id_servers" {
-  value = module.nomad.security_group_id_servers
+# Sydney
+output "security_group_id_servers_sydney" {
+  value = module.nomad_sydney.security_group_id_servers
 }
 
-output "asg_name_clients" {
-  value = module.nomad.asg_name_clients
+output "aws_region_sydney" {
+  value = module.nomad_sydney.aws_region
 }
 
-output "asg_name_servers" {
-  value = module.nomad.asg_name_clients
+output "nomad_client_ips_sydney" {
+  value = module.nomad_sydney.public_ip_client
 }
-output "aws_region" {
-  value = module.nomad.aws_region
-}
-
-/*
-output "nomad_server_ip"  {
-	value = aws_eip.nomad_server_ip.public_ip
-}
-*/
