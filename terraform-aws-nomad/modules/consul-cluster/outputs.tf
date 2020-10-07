@@ -38,3 +38,8 @@ output "cluster_tag_value" {
   description = "This is the tag value used to allow the consul servers to autojoin"
 }
 
+# XXX Masa Added
+output public_ips {
+  value = data.aws_instance.asg-one-instances.*.public_ip
+}
+

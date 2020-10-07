@@ -241,3 +241,21 @@ module "iam_policies" {
   iam_role_id = element(concat(aws_iam_role.instance_role.*.id, [""]), 0)
 }
 
+# XXX Added by Masa
+# Get public IP for each servers in Japan
+
+data "aws_instances" "nodes" {
+  depends_on = [aws_autoscaling_group.autoscaling_group]
+
+  instance_tags = {
+    Name = var.cluster_name
+  }
+}
+
+data "aws_instance" "asg-one-instances" {
+  count       = aws_autoscaling_group.autoscaling_group.desired_capacity
+  depends_on  = [data.aws_instances.nodes]
+  instance_id = data.aws_instances.nodes.ids[count.index]
+}
+
+

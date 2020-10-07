@@ -43,6 +43,6 @@ output "security_group_id" {
 }
 
 # XXX Masa Added
-output public_ips_clients {
+output public_ips {
   value = data.aws_instance.asg-one-instances.*.public_ip
 }

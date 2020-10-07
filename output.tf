@@ -8,7 +8,11 @@ output "aws_region_japan" {
 }
 
 output "nomad_client_ips_japan" {
-  value = module.nomad_japan.public_ip_client
+  value = module.nomad_japan.public_ip_clients
+}
+
+output "nomad_server_ips_japan" {
+  value = module.nomad_sydney.public_ip_servers
 }
 
 # Sydney
@@ -21,5 +25,9 @@ output "aws_region_sydney" {
 }
 
 output "nomad_client_ips_sydney" {
-  value = module.nomad_sydney.public_ip_client
+  value = module.nomad_sydney.public_ip_clients
+}
+
+output "nomad_server_ips_sydney" {
+  value = module.nomad_sydney.public_ip_servers
 }
