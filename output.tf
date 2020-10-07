@@ -12,7 +12,7 @@ output "nomad_client_ips_japan" {
 }
 
 output "nomad_server_ips_japan" {
-  value = module.nomad_sydney.public_ip_servers
+  value = module.nomad_japan.public_ip_servers
 }
 
 # Sydney
