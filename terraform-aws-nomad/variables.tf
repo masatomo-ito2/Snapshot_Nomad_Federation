@@ -75,5 +75,6 @@ variable "vpc_id" {
 
 variable public_subnet {
   description = "Public subnet id"
-  default     = ""
+  type        = list(string)
+  default     = [""]
 }

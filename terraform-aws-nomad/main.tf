@@ -73,7 +73,7 @@ module "servers" {
 
   vpc_id = data.aws_vpc.default.id
   # subnet_ids = data.aws_subnet_ids.default.ids
-  subnet_ids = [var.public_subnet]
+  subnet_ids = var.public_subnet
 
   # To make testing easier, we allow requests from any IP address here but in a production deployment, we strongly
   # recommend you limit this to the IP address ranges of known, trusted servers inside your VPC.
@@ -154,7 +154,7 @@ module "clients" {
 
   vpc_id = data.aws_vpc.default.id
   # subnet_ids = data.aws_subnet_ids.default.ids
-  subnet_ids = [var.public_subnet, var.public_subnet]
+  subnet_ids = var.public_subnet
 
   # To make testing easier, we allow Consul and SSH requests from any IP address here but in a production
   # deployment, we strongly recommend you limit this to the IP address ranges of known, trusted servers inside your VPC.
