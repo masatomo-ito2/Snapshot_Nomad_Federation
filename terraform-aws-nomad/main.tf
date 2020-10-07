@@ -58,7 +58,10 @@ data "aws_ami" "nomad_consul" {
 # ---------------------------------------------------------------------------------------------------------------------
 
 module "servers" {
-  source = "github.com/hashicorp/terraform-aws-consul//modules/consul-cluster?ref=v0.7.7"
+	# XXX Masa added
+	# Import original module to this repo, so that I can make modification
+  # source = "github.com/hashicorp/terraform-aws-consul//modules/consul-cluster?ref=v0.7.7"
+  source = "./modules/consul-cluster"
 
   cluster_name  = "${var.cluster_name}-server"
   cluster_size  = var.num_servers

@@ -36,13 +36,13 @@ module "nomad_japan" {
 
   source = "./terraform-aws-nomad"
 
-	# region specific
+  # region specific
   vpc_id        = local.vpc_id_japan
   public_subnet = local.public_subnets_japan
   ssh_key_name  = var.ssh_key_name_japan
   ami_id        = var.ami_japan
 
-	# common settings
+  # common settings
   num_clients   = var.num_clients
   num_servers   = var.num_servers
   instance_type = var.instance_type
@@ -58,13 +58,13 @@ module "nomad_sydney" {
 
   source = "./terraform-aws-nomad"
 
-	# region specific
+  # region specific
   vpc_id        = local.vpc_id_sydney
   public_subnet = local.public_subnets_sydney
   ssh_key_name  = var.ssh_key_name_sydney
   ami_id        = var.ami_sydney
 
-	# common settings
+  # common settings
   num_clients   = var.num_clients
   num_servers   = var.num_servers
   instance_type = var.instance_type
