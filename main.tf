@@ -37,7 +37,7 @@ module "nomad_japan" {
   vpc_id        = local.vpc_id_japan
   public_subnet = local.public_subnets_japan
 
-  ami_id        = var.ami
+  ami_id        = var.ami_japan
   num_clients   = var.num_clients
   num_servers   = var.num_servers
   ssh_key_name  = var.ssh_key_name_japan
@@ -55,7 +55,7 @@ module "nomad_sydney" {
   vpc_id        = local.vpc_id_sydney
   public_subnet = local.public_subnets_sydney
 
-  ami_id        = var.ami
+  ami_id        = var.ami_sydney
   num_clients   = var.num_clients
   num_servers   = var.num_servers
   ssh_key_name  = var.ssh_key_name_sydney
