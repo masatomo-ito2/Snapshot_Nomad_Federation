@@ -15,6 +15,7 @@ packer build nomad-consul.json
 	
 4. Set up TFC Workspace
 	- See variables.tf for required variables.
+	- Please use Ubuntu AMI
 	- Set up VCS integration with your repo created at step 3.
 
 5. Queue plan
@@ -22,11 +23,13 @@ packer build nomad-consul.json
 6. Once provigioning finished, you ssh into either of servers. Server IP should be obtained by terraform output nomad_server_ips_{aws region}. And run,
 ```
 nomad server join {nomad server ip of other region}
+```
 
 7. Enjoy multi-cloud federation!
 
 
 ## To do
+* [done] Install docker to clients
 * [____] Automate `nomad server join` process.
 	- Use `null_resource` with remote provisioner to run the command after all provisioning. It only needs to be done in either of servers.
 * [____] Mechanism to enter a license for enterprise binary.
