@@ -26,6 +26,12 @@ nomad server join {nomad server ip of other region}
 7. Enjoy multi-cloud federation!
 
 
+## To do
+* [____] Automate `nomad server join` process.
+	- Use `null_resource` with remote provisioner to run the command after all provisioning. It only needs to be done in either of servers.
+* [____] Mechanism to enter a license for enterprise binary.
+	- Use `null_resourxce` to run remote provisioner, execute `nomad license put`.
+
 
 
 
