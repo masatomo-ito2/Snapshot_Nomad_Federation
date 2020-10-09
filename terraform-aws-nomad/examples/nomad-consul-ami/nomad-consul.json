@@ -1,7 +1,7 @@
 {
   "min_packer_version": "0.12.0",
   "variables": {
-    "aws_region": "ap-southeast-2",
+    "aws_region": "ap-northeast-1",
     "nomad_version": "0.12.5+ent",
     "consul_module_version": "v0.7.10",
     "consul_version": "1.8.4+ent",
