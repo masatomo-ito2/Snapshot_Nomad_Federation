@@ -2,6 +2,11 @@
 
 ## HashiCorp Snapshot demo for Nomad Federation 1
 
+### Prerequite
+
+Prepare two VPCs to use and store the IDs in statefile on TFC workspace.
+[Example](https://github.com/masatomo-ito2/aws_masa_vpc)
+
 ### Steps
 
 1. Clone this repo
