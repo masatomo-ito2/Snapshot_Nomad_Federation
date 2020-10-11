@@ -38,10 +38,10 @@ output "demo_commands" {
 	value = <<EOF
 
 * ssh into nomad server in ap-northeast-1	
-ssh ubuntu@${module.nomad_japan.public_ip_servers}
+ssh ubuntu@${module.nomad_japan.public_ip_servers[0]}
 
 * Nomad join
-nomad server join ${module.nomad_sydney.public_ip_servers}
+nomad server join ${module.nomad_sydney.public_ip_servers[0]}
 
 * Server status
 nomad server members
