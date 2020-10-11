@@ -1,6 +1,6 @@
 job "snapshot-oct" {
 
-  multiregion {
+  multiregion {  # Enterpise feature
 
     strategy {
       max_parallel = 1
