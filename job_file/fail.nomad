@@ -72,6 +72,13 @@ EOT
 				cpu    = 128
 				memory = 64
 			}
+
+			service {
+				name = "${NOMAD_TASK_NAME}"
+
+				tags = [
+					"snapshot"
+				]
 		}
 	}
 }
