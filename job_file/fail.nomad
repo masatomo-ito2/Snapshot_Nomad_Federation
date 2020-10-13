@@ -1,4 +1,4 @@
-job "snapshot-oct" {
+job "snapshot-oct-fail" {
 
 	multiregion {
 
@@ -79,6 +79,7 @@ EOT
 				tags = [
 					"snapshot"
 				]
+			}
 		}
 	}
 }
