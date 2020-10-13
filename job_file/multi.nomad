@@ -55,14 +55,6 @@ job "snapshot-oct" {
         }
       }
 
-			service {
-				name = "${NOMAD_TASK_NAME}"
-				port = "6379"
-
-				tags = [
-					"snapshot"
-				]
-			}
     }
   }
 }
