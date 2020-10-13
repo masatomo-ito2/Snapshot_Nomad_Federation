@@ -47,7 +47,7 @@ nomad server join ${module.nomad_sydney.public_ip_servers[0]}
 nomad server members
 
 * Run multi-region deployment
-wget --quiet https://raw.githubusercontent.com/pandom/terraform-nomad-jobs/master/snapshot/multi.nomad
+wget --quiet https://raw.githubusercontent.com/masatomo-ito2/Snapshot_Nomad_Federation/main/job_file/multi.nomad
 nomad job run multi.nomad
 
 * Simulate demployment failure
